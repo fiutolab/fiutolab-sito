@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Privacy · FiuTO</title>
+<meta name="description" content="Come FiuTO tratta i dati di chi visita fiutolab.it o ci contatta.">
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://fiutolab.it/privacy/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#13343B">
+<link rel="preconnect" href="https://fonts.bunny.net">
+<link href="https://fonts.bunny.net/css?family=outfit:300,400,500,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+<script data-goatcounter="https://fiutolab.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</head>
+<body>
+<div class="on-petrol">
+<header class="site-header" id="top">
+  <div class="wrap">
+    <a class="logo" href="/" aria-label="FiuTO, torna alla home">F<span class="lg-i" aria-hidden="true"><span class="stem"></span><span class="base"></span><span class="seat"></span></span><span class="u">u</span><span class="lg-t" aria-hidden="true"><span class="stem"></span><span class="plank"></span></span><span class="lg-o" aria-hidden="true"><span class="shadow"></span><span class="mat"></span><span class="ring"></span></span></a>
+    <nav class="nav" aria-label="Pagine">
+      <a href="/#fuori-dentro">Cosa facciamo</a>
+      <a href="/#metodo">Come lavoriamo</a>
+      <a href="/check-up/">Check-up</a>
+      <a href="/#domande">Domande</a>
+      <a href="/#contatti">Contatti</a>
+    </nav>
+    <a class="btn btn-coral btn-sm header-cta" href="https://wa.me/393669768852?text=Ciao%20FiuTO%2C%20vi%20racconto%20il%20mio%20locale" target="_blank" rel="noopener" data-goatcounter-click="WhatsApp · locali · testata">Scrivici</a>
+  </div>
+</header>
+
+<section class="hero" id="hero" style="padding-block: 32px 64px">
+  <div class="wrap">
+    <div class="hero-text">
+      <p class="eyebrow">Privacy</p>
+      <h1>I tuoi dati, <span>detto semplice.</span></h1>
+      <p class="intro">Questo sito non usa cookie e non ti chiede dati. Qui sotto trovi cosa succede quando lo visiti e quando ci scrivi.</p>
+    </div>
+  </div>
+</section>
+</div>
+
+<main>
+  <section class="section">
+    <div class="wrap"><div class="prose">
+      <h2>Chi tratta i dati</h2>
+      <p>FiuTO, P.IVA 02206240380, Torino. Per qualsiasi domanda sui tuoi dati scrivi a <a href="mailto:info@fiutolab.it">info@fiutolab.it</a>.</p>
+
+      <h2>Cookie</h2>
+      <p>Il sito non usa cookie, né nostri né di altri. Per questo non trovi nessun banner.</p>
+
+      <h2>Statistiche delle visite</h2>
+      <p>Per sapere quante persone visitano il sito e quante ci contattano usiamo <a href="https://www.goatcounter.com/" target="_blank" rel="noopener">GoatCounter</a>. Non usa cookie e non conserva dati che permettano di identificarti: vediamo solo numeri complessivi, come le pagine più viste o quante volte è stato premuto il pulsante WhatsApp.</p>
+
+      <h2>Caratteri e ospitalità del sito</h2>
+      <p>Il carattere tipografico arriva da Bunny Fonts, un servizio europeo che non usa cookie. Il sito è ospitato da GitHub Pages (GitHub Inc.), che per motivi di sicurezza può registrare l'indirizzo IP di chi visita le pagine, come fa qualsiasi server.</p>
+
+      <h2>Quando ci scrivi</h2>
+      <p>Se ci contatti su WhatsApp o per email, usiamo il tuo nome, il tuo numero o indirizzo e quello che ci scrivi solo per risponderti. Se poi lavoriamo insieme, usiamo i dati che servono per preventivi, fatture e obblighi di legge, e li conserviamo per il tempo che la legge richiede. Non vendiamo né cediamo i tuoi dati a nessuno.</p>
+      <p>WhatsApp è un servizio di Meta e l'email passa dal nostro fornitore di posta: ognuno ha la propria informativa sulla privacy.</p>
+
+      <h2>I tuoi diritti</h2>
+      <p>Puoi chiederci in qualsiasi momento di vedere, correggere o cancellare i tuoi dati, scrivendo a <a href="mailto:info@fiutolab.it">info@fiutolab.it</a>. Se pensi che non li stiamo trattando bene, puoi rivolgerti al Garante per la protezione dei dati personali (<a href="https://www.garanteprivacy.it/" target="_blank" rel="noopener">garanteprivacy.it</a>).</p>
+
+      <p class="updated">Aggiornata il 16 ottobre 2026.</p>
+    </div></div>
+  </section>
+</main>
+
+<footer class="site-footer on-petrol">
+  <div class="wrap">
+    <span>FiuTO · Comunicazione e consulenza per le aziende · Torino</span>
+    <nav aria-label="Altre pagine"><a href="/locali/">Locali</a><a href="/check-up/">Check-up</a><a href="/presentazione/">Presentazione</a><a href="/privacy/" aria-current="page">Privacy</a><span>P.IVA 02206240380</span></nav>
+  </div>
+</footer>
+
+
+<script>
+(function () {
+  var btn = document.getElementById('copy-email');
+  if (!btn) return;
+  btn.addEventListener('click', function () {
+    var text = btn.getAttribute('data-copy');
+    var done = function () {
+      btn.textContent = 'Copiato';
+      setTimeout(function () { btn.textContent = 'Copia'; }, 1800);
+    };
+    var fallback = function () {
+      var el = document.getElementById('email-addr');
+      var range = document.createRange();
+      range.selectNodeContents(el);
+      var sel = window.getSelection();
+      sel.removeAllRanges();
+      sel.addRange(range);
+      btn.textContent = 'Selezionato';
+      setTimeout(function () { btn.textContent = 'Copia'; }, 1800);
+    };
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done, fallback);
+      } else {
+        fallback();
+      }
+    } catch (e) { fallback(); }
+  });
+})();
+(function () {
+  var fab = document.getElementById('wa-float');
+  var hero = document.getElementById('hero');
+  var contact = document.getElementById('contatti');
+  if (!fab || !hero || !contact || !('IntersectionObserver' in window)) { if (fab) fab.classList.add('show'); return; }
+  var heroVisible = true, contactVisible = false;
+  function update() { fab.classList.toggle('show', !heroVisible && !contactVisible); }
+  new IntersectionObserver(function (e) { heroVisible = e[0].isIntersecting; update(); }).observe(hero);
+  new IntersectionObserver(function (e) { contactVisible = e[0].isIntersecting; update(); }).observe(contact);
+})();
+</script>
+</body>
+</html>

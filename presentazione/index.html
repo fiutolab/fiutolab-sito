@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Presentazione FiuTO</title>
+<meta name="description" content="FiuTO: comunicazione e consulenza per le aziende di Torino. Qualità dell'agenzia, costo dei freelance.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#13343B">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="it_IT">
+<meta property="og:site_name" content="FiuTO">
+<meta property="og:title" content="Presentazione FiuTO">
+<meta property="og:description" content="Qualità dell'agenzia, costo dei freelance. Comunicazione e consulenza per le aziende di Torino.">
+<meta property="og:url" content="https://fiutolab.it/presentazione/">
+<meta property="og:image" content="https://fiutolab.it/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.bunny.net">
+<link href="https://fonts.bunny.net/css?family=outfit:300,400,500,600&display=swap" rel="stylesheet">
+<style>:root{padding-top:0;padding-bottom:env(safe-area-inset-bottom,0px)}</style>
+<style>
+/* Layout: una slide verticale per schermata, petrolio e crema alternati, si scorre col pollice. Un solo look di marca, uguale in tema chiaro e scuro. */
+:root {
+  --petrol: #13343B;
+  --petrol-2: #1E4A52;
+  --crema: #F3F1EC;
+  --crema-2: #E3ECEA;
+  --line: #D3DFDD;
+  --muted: #4F6266;
+  --on-petrol-muted: #BFD3D2;
+  --on-petrol-faint: #7FA3A8;
+  --teal-text: #2E6670;
+  --coral: #EE8A6A;
+  --coral-strong: #E0734F;
+  --coral-deep: #C95D3C;
+  --font: 'Outfit', 'Avenir Next', 'Segoe UI', system-ui, sans-serif;
+  color-scheme: light;
+  scroll-snap-type: y proximity;
+  scroll-behavior: smooth;
+}
+@media (prefers-reduced-motion: reduce) { :root { scroll-behavior: auto; } }
+* { box-sizing: border-box; }
+html { background: var(--petrol); }
+body { margin: 0; background: var(--petrol); color: var(--petrol); font-family: var(--font); font-size: 17px; line-height: 1.45; -webkit-font-smoothing: antialiased; }
+h1, h2, h3, p { margin: 0; }
+h1, h2 { text-wrap: balance; font-weight: 600; letter-spacing: -0.025em; }
+a { color: inherit; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--coral); outline-offset: 3px; border-radius: 6px; }
+
+/* Progresso */
+.progress { position: fixed; top: 0; left: 0; right: 0; z-index: 20; padding-top: env(safe-area-inset-top, 0px); padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); pointer-events: none; }
+.progress-track { display: flex; gap: 4px; max-width: 520px; margin: 10px auto 0; }
+.progress-track span { flex: 1; height: 3px; border-radius: 3px; background: rgba(127,163,168,.35); transition: background .25s; }
+.progress-track span.on { background: var(--coral); }
+
+/* Slide */
+.slide { min-height: 100svh; scroll-snap-align: start; display: flex; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.slide > .in { width: 100%; max-width: 520px; margin: 0 auto; padding-block: 56px 28px; display: flex; flex-direction: column; gap: 28px; }
+.petrol { background: var(--petrol); color: var(--crema); }
+.crema { background: var(--crema); color: var(--petrol); }
+.grow { flex: 1; }
+.foot { margin-top: auto; display: flex; justify-content: space-between; font-size: 13px; color: var(--on-petrol-faint); padding-top: 8px; }
+.crema .foot { color: #7E8E90; }
+.label { font-size: 15px; font-weight: 500; color: var(--coral); }
+.crema .label { color: var(--coral-deep); }
+h2 { font-size: clamp(34px, 9.4vw, 44px); line-height: 1.06; }
+.big { font-size: clamp(42px, 12.5vw, 60px); line-height: 1.02; letter-spacing: -0.035em; }
+.lead { font-size: 19px; font-weight: 300; line-height: 1.4; }
+.coral { color: var(--coral); }
+.teal { color: var(--teal-text); }
+
+/* Logo in CSS, come sul sito */
+.logo { --logo-accent: var(--coral); --logo-bg: var(--petrol); font-weight: 500; line-height: 1; letter-spacing: -0.02em; white-space: nowrap; display: inline-block; padding-top: 0.12em; font-size: 34px; }
+.crema .logo { --logo-accent: var(--coral-strong); --logo-bg: var(--crema); }
+.logo .u { font-weight: 400; }
+.lg-i, .lg-t, .lg-o { position: relative; display: inline-block; }
+.lg-i span, .lg-t span, .lg-o span { position: absolute; display: block; }
+.lg-i { width: 0.26em; height: calc(1ex + 0.14em); margin: 0 -0.02em 0 0.01em; }
+.lg-i .stem { left: 0.085em; bottom: 0; width: 0.09em; height: 1ex; background: currentColor; }
+.lg-i .base { left: 0.035em; bottom: 0; width: 0.19em; height: 0.03em; border-radius: 999px; background: currentColor; }
+.lg-i .seat { left: 0.04em; top: 0; width: 0.2em; height: 0.07em; border-radius: 999px; background: var(--logo-accent); }
+.lg-t { width: 0.62em; height: calc(1cap + 0.11em); margin-right: -0.02em; }
+.lg-t .stem { left: 0.26em; bottom: 0; width: 0.1em; height: 1cap; background: currentColor; }
+.lg-t .plank { left: -0.04em; top: 0; width: 0.82em; height: 0.11em; border-radius: 0.03em; background: var(--logo-accent); }
+.lg-o { width: calc(1cap + 0.02em); height: calc(1cap + 0.02em); margin: 0 0.14em -0.01em 0.15em; }
+.lg-o .shadow { left: -0.06em; top: -0.015em; width: 0.9em; height: 0.9em; border-radius: 0.12em; background: var(--logo-accent); transform: rotate(-10deg); }
+.lg-o .mat { left: -0.09em; top: -0.05em; width: 0.9em; height: 0.9em; border: 0.025em solid var(--logo-accent); border-radius: 0.12em; background: var(--logo-bg); transform: rotate(-10deg); }
+.lg-o .ring { inset: 0; border: 0.09em solid currentColor; border-radius: 50%; }
+
+/* Sottobicchiere grande */
+.coaster { --s: min(46vw, 210px); position: relative; width: var(--s); height: var(--s); align-self: flex-end; margin-right: 6px; }
+.coaster i { position: absolute; display: block; }
+.coaster .sh { inset: 4% -2% -4% 4%; background: var(--coral); border-radius: 13%; transform: rotate(-10deg); }
+.coaster .mt { inset: 0; background: var(--petrol); border: 3px solid var(--coral); border-radius: 13%; transform: rotate(-10deg); }
+.coaster .rg { inset: 14%; border: calc(var(--s) * .085) solid var(--crema); border-radius: 50%; }
+.crema .coaster .sh { background: var(--coral-strong); }
+.crema .coaster .mt { background: var(--crema); border-color: var(--coral-strong); }
+.crema .coaster .rg { border-color: var(--petrol); }
+
+.hint { display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--on-petrol-faint); }
+.hint svg { width: 18px; height: 18px; animation: nudge 1.8s ease-in-out infinite; }
+@keyframes nudge { 0%,100% { transform: translateY(0); } 50% { transform: translateY(4px); } }
+@media (prefers-reduced-motion: reduce) { .hint svg { animation: none; } }
+
+/* Icone */
+.ic { width: 30px; height: 30px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+
+/* Card */
+.cards { display: flex; flex-direction: column; gap: 12px; }
+.card { border-radius: 18px; padding: 20px; display: flex; flex-direction: column; gap: 8px; }
+.card h3 { font-size: 22px; font-weight: 500; line-height: 1.2; }
+.card p { font-size: 16px; line-height: 1.4; }
+.card-dark { background: var(--petrol); color: var(--crema); }
+.card-dark p { color: var(--on-petrol-muted); }
+.card-dark .ic { color: var(--coral); }
+.card-deep { background: var(--petrol-2); color: var(--crema); }
+.card-deep p { color: var(--on-petrol-muted); }
+.card-deep .ic { color: var(--coral); }
+.card-light { background: var(--crema-2); color: var(--petrol); }
+.card-light p { color: var(--muted); }
+.card-row { flex-direction: row; gap: 16px; align-items: flex-start; }
+.card-row > div { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+
+/* Elenco servizi */
+.list { display: flex; flex-direction: column; }
+.list > div { display: flex; gap: 16px; align-items: flex-start; padding: 15px 0; border-bottom: 1.5px solid var(--line); }
+.list > div:last-child { border-bottom: 0; }
+.list > div > div { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+.list h3 { font-size: 20px; font-weight: 500; line-height: 1.2; }
+.list p { font-size: 15.5px; color: var(--muted); line-height: 1.4; }
+.list .ic { width: 26px; height: 26px; margin-top: 1px; }
+
+.band { margin-inline: calc(-1 * max(16px, env(safe-area-inset-left, 0px))); padding: 28px max(16px, env(safe-area-inset-left, 0px)) 26px; background: var(--petrol); color: var(--crema); display: flex; flex-direction: column; gap: 10px; }
+.band-wrap { margin-top: -56px; }
+
+/* Fuori / dentro */
+.fd { display: flex; flex-direction: column; gap: 36px; }
+.fd-word { font-size: clamp(64px, 20vw, 96px); font-weight: 600; line-height: .95; letter-spacing: -0.045em; }
+.fd p { font-size: 17px; line-height: 1.4; color: var(--muted); border-top: 2.5px solid currentColor; padding-top: 12px; margin-top: 8px; }
+.fd .out p { border-top-color: var(--petrol); }
+.fd .inn .fd-word { color: var(--coral-deep); }
+.fd .inn p { border-top-color: var(--coral-deep); }
+
+/* Misure */
+.struck { display: flex; flex-wrap: wrap; gap: 6px 18px; }
+.struck span { font-size: 24px; font-weight: 500; color: var(--on-petrol-faint); text-decoration: line-through var(--coral) 2px; }
+.card .sign { font-size: 56px; font-weight: 600; line-height: .8; color: var(--coral); }
+.measure h3 { font-size: 26px; font-weight: 600; }
+
+/* Metodo */
+.steps { display: flex; flex-direction: column; gap: 0; }
+.step { display: grid; grid-template-columns: 52px 1fr; gap: 16px; position: relative; padding-bottom: 22px; }
+.step:last-child { padding-bottom: 0; }
+.step::before { content: ""; position: absolute; left: 25px; top: 52px; bottom: 0; width: 2px; background: rgba(238,138,106,.35); }
+.step:last-child::before { display: none; }
+.num { width: 52px; height: 52px; border-radius: 50%; border: 2px solid var(--coral); display: grid; place-items: center; font-size: 22px; font-weight: 600; }
+.step h3 { font-size: 22px; font-weight: 500; margin-top: 4px; }
+.step p { font-size: 16px; color: var(--on-petrol-muted); margin-top: 4px; }
+
+/* Pacchetti */
+.tag { align-self: flex-start; font-size: 13px; font-weight: 600; padding: 4px 12px; border-radius: 999px; background: var(--coral); color: var(--petrol); }
+.kicker { font-size: 13px; font-weight: 600; color: var(--teal-text); }
+
+/* Contatti */
+.contacts { display: flex; flex-direction: column; gap: 10px; }
+.chip { display: flex; align-items: center; justify-content: space-between; gap: 12px; background: var(--petrol); color: var(--crema); border-radius: 16px; padding: 15px 18px; font-size: 17px; font-weight: 500; text-decoration: none; min-width: 0; }
+.chip small { display: block; font-size: 12px; font-weight: 400; color: var(--on-petrol-faint); }
+.chip .val { min-width: 0; overflow-wrap: anywhere; }
+.chip .ic { width: 22px; height: 22px; color: var(--coral); }
+.chip button { font: inherit; font-size: 14px; color: var(--petrol); background: var(--coral); border: 0; border-radius: 999px; padding: 6px 12px; cursor: pointer; flex: none; }
+.chip-wa { background: var(--coral-strong); color: var(--petrol); }
+.chip-wa small { color: var(--petrol); opacity: .75; }
+.chip-wa .ic { color: var(--petrol); }
+.fiuto-split { margin-inline: calc(-1 * max(16px, env(safe-area-inset-left, 0px))); margin-top: -56px; padding: 72px max(16px, env(safe-area-inset-left, 0px)) 32px; background: var(--petrol); color: var(--crema); }
+.quote { font-size: 16.5px; line-height: 1.45; color: var(--muted); border-left: 4px solid var(--coral-deep); padding-left: 16px; }
+
+@media (min-width: 700px) {
+  .slide > .in { padding-block: 72px 32px; }
+}
+</style>
+<script data-goatcounter="https://fiutolab.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</head>
+<body>
+
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-users" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+  <symbol id="i-tool" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></symbol>
+  <symbol id="i-zap" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></symbol>
+  <symbol id="i-thumb" viewBox="0 0 24 24"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></symbol>
+  <symbol id="i-db" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></symbol>
+  <symbol id="i-bulb" viewBox="0 0 24 24"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22 6 12 13 2 6"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></symbol>
+  <symbol id="i-down" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></symbol>
+</svg>
+
+<div class="progress" aria-hidden="true"><div class="progress-track" id="track"></div></div>
+
+<main>
+
+<!-- 1 · Copertina -->
+<section class="slide petrol" id="s1" aria-label="Copertina">
+  <div class="in">
+    <span class="logo" aria-label="FiuTO">F<span class="lg-i" aria-hidden="true"><span class="stem"></span><span class="base"></span><span class="seat"></span></span><span class="u">u</span><span class="lg-t" aria-hidden="true"><span class="stem"></span><span class="plank"></span></span><span class="lg-o" aria-hidden="true"><span class="shadow"></span><span class="mat"></span><span class="ring"></span></span></span>
+    <div class="grow"></div>
+    <div class="coaster" aria-hidden="true"><i class="sh"></i><i class="mt"></i><i class="rg"></i></div>
+    <h1 class="big">Qualità dell’agenzia, <span class="coral">costo dei freelance.</span></h1>
+    <p class="lead" style="color:var(--on-petrol-muted)">Comunicazione e consulenza per le aziende di Torino.</p>
+    <div class="foot"><span class="hint"><svg class="ic"><use href="#i-down"/></svg>Scorri</span><span>1 / 11</span></div>
+  </div>
+</section>
+
+<!-- 2 · Il problema -->
+<section class="slide crema" id="s2" aria-label="Il problema">
+  <div class="in">
+    <h2>Un’azienda ha bisogno di tutto. <span class="teal">Di solito trova soluzioni a metà.</span></h2>
+    <div class="cards">
+      <div class="card card-dark card-row"><svg class="ic"><use href="#i-users"/></svg><div><h3>L’agenzia</h3><p>Fa tutto, ma costa molto. Spesso più di quanto serve.</p></div></div>
+      <div class="card card-dark card-row"><svg class="ic"><use href="#i-tool"/></svg><div><h3>Il freelance</h3><p>Costa poco, ma si occupa di una cosa sola. Il resto devi coordinarlo tu.</p></div></div>
+      <div class="card card-dark card-row"><svg class="ic"><use href="#i-clock"/></svg><div><h3>Il fai da te</h3><p>Non costa niente, non serve a niente.</p></div></div>
+    </div>
+    <div class="foot"><span>FiuTO · fiutolab.it</span><span>2 / 11</span></div>
+  </div>
+</section>
+
+<!-- 3 · FiuTO -->
+<section class="slide crema" id="s3" aria-label="FiuTO">
+  <div class="in">
+    <div class="fiuto-split">
+      <h2 class="big">Abbiamo <span class="coral">fiuto</span> per quello che serve.</h2>
+    </div>
+    <p style="font-size:23px;font-weight:500;line-height:1.3">Un solo riferimento per tutta la tua azienda, con costi da freelance.</p>
+    <p class="quote">Abbiamo lavorato dentro le aziende e dentro le agenzie di comunicazione. Sappiamo cosa conta davvero e cosa invece è solo una spesa.</p>
+    <div class="foot"><span>FiuTO · fiutolab.it</span><span>3 / 11</span></div>
+  </div>
+</section>
+
+<!-- 4 · Fuori e dentro -->
+<section class="slide crema" id="s4" aria-label="Fuori e dentro" style="background:var(--crema-2)">
+  <div class="in">
+    <h2>Lavoriamo fuori e dentro la tua azienda.</h2>
+    <div class="fd">
+      <div class="out"><div class="fd-word" style="color:var(--petrol)">Fuori</div><p>Come ti vedono i clienti: sito, immagine, recensioni, pubblicità.</p></div>
+      <div class="inn"><div class="fd-word">Dentro</div><p>Come funziona e quanto rende: margini, acquisti, magazzino, personale.</p></div>
+    </div>
+    <div class="foot"><span>FiuTO · fiutolab.it</span><span>4 / 11</span></div>
+  </div>
+</section>
+
+<!-- 5 · Fuori -->
+<section class="slide crema" id="s5" aria-label="Fuori, comunicazione">
+  <div class="in">
+    <div class="band band-wrap" style="padding-top:72px">
+      <p class="label">Fuori · comunicazione</p>
+      <h2>Come ti vedono i clienti.</h2>
+    </div>
+    <div class="list">
+      <div><svg class="ic"><use href="#i-globe"/></svg><div><h3>Siti e app</h3><p>Su misura, veloci, pensati per farti contattare.</p></div></div>
+      <div><svg class="ic"><use href="#i-play"/></svg><div><h3>Foto, video e contenuti</h3><p>Immagini vere della tua azienda, che convincono.</p></div></div>
+      <div><svg class="ic"><use href="#i-zap"/></svg><div><h3>Pubblicità e immagine</h3><p>Google, campagne in zona, grafica e stampati.</p></div></div>
+      <div><svg class="ic"><use href="#i-thumb"/></svg><div><h3>Recensioni e reputazione</h3><p>Più recensioni vere e le risposte giuste.</p></div></div>
+      <div><svg class="ic"><use href="#i-star"/></svg><div><h3>Eventi e iniziative</h3><p>Inaugurazioni, open day, promozioni: dall’idea al lancio.</p></div></div>
+    </div>
+    <div class="foot"><span>FiuTO · fiutolab.it</span><span>5 / 11</span></div>
+  </div>
+</section>
+
+<!-- 6 · Dentro -->
+<section class="slide crema" id="s6" aria-label="Dentro, consulenza">
+  <div class="in">
+    <div class="band band-wrap" style="padding-top:72px">
+      <p class="label">Dentro · consulenza</p>
+      <h2>Come funziona e quanto rende.</h2>
+    </div>
+    <div class="list">
+      <div><svg class="ic"><use href="#i-chart"/></svg><div><h3>Prezzi e margini</h3><p>Quanto guadagni davvero su ogni prodotto o servizio.</p></div></div>
+      <div><svg class="ic"><use href="#i-search"/></svg><div><h3>Acquisti e fornitori</h3><p>Offerte e condizioni a confronto, per spendere meno.</p></div></div>
+      <div><svg class="ic"><use href="#i-db"/></svg><div><h3>Magazzino e sprechi</h3><p>Cosa resta fermo, cosa si butta, cosa si ordina troppo.</p></div></div>
+      <div><svg class="ic"><use href="#i-users"/></svg><div><h3>Organizzazione e personale</h3><p>Turni, ruoli, persone che mancano: soluzioni pratiche.</p></div></div>
+      <div><svg class="ic"><use href="#i-bulb"/></svg><div><h3>Consulenza generale</h3><p>Un secondo parere sulle decisioni importanti.</p></div></div>
+    </div>
+    <div class="foot"><span>FiuTO · fiutolab.it</span><span>6 / 11</span></div>
+  </div>
+</section>
+
+<!-- 7 · Cosa misuriamo -->
+<section class="slide petrol" id="s7" aria-label="Cosa misuriamo">
+  <div class="in">
+    <p class="label">Cosa misuriamo</p>
+    <h2 class="big" style="margin-top:-14px">Non contiamo i like.</h2>
+    <div class="struck"><span>Like</span><span>Follower</span><span>Visualizzazioni</span></div>
+    <div class="cards">
+      <div class="card card-deep measure"><p class="sign">+</p><h3>Clienti veri in più</h3><p>Persone che chiamano, chiedono un preventivo, comprano.</p></div>
+      <div class="card card-deep measure"><p class="sign">−</p><h3>Spese in meno dentro</h3><p>Risparmio su acquisti, sprechi e organizzazione.</p></div>
+    </div>
+    <div class="foot"><span>FiuTO · fiutolab.it</span><span>7 / 11</span></div>
+  </div>
+</section>
+
+<!-- 8 · Come lavoriamo -->
+<section class="slide petrol" id="s8" aria-label="Come lavoriamo" style="background:var(--petrol-2)">
+  <div class="in">
+    <h2>Come lavoriamo.</h2>
+    <div class="steps">
+      <div class="step"><div class="num">1</div><div><h3>Check-up</h3><p>Guardiamo come lavori oggi: cosa funziona e cosa no.</p></div></div>
+      <div class="step"><div class="num">2</div><div><h3>Proposta</h3><p>Un piano chiaro, voce per voce, con i costi prima di iniziare.</p></div></div>
+      <div class="step"><div class="num">3</div><div><h3>Lavoro</h3><p>Un solo referente e tempi chiari fin dall’inizio.</p></div></div>
+      <div class="step"><div class="num">4</div><div><h3>Risultati</h3><p>Misuriamo cosa è cambiato e aggiustiamo il tiro.</p></div></div>
+    </div>
+    <div class="foot"><span>FiuTO · fiutolab.it</span><span>8 / 11</span></div>
+  </div>
+</section>
+
+<!-- 9 · Pacchetti -->
+<section class="slide crema" id="s9" aria-label="Da dove si parte">
+  <div class="in">
+    <h2>Da dove si parte.</h2>
+    <div class="cards">
+      <div class="card card-dark"><span class="tag">Il primo passo</span><h3 style="font-weight:600">Check-up FiuTO</h3><p>Un incontro e un’analisi della tua azienda, per capire insieme le priorità.</p></div>
+      <div class="card card-light"><span class="kicker">Fuori</span><h3>Pacchetto Vetrina</h3><p>Sito, scheda Google e Maps, foto e una prima campagna.</p></div>
+      <div class="card card-light"><span class="kicker">Dentro</span><h3>Pacchetto Margine</h3><p>Costi, prezzi e acquisti, per guadagnare di più su quello che già vendi.</p></div>
+      <div class="card card-light"><span class="kicker">Fuori e dentro</span><h3>FiuTO Fisso</h3><p>Ogni mese al tuo fianco, con tutta la nostra expertise.</p></div>
+    </div>
+    <p style="font-size:16.5px;color:var(--teal-text)">Ogni pacchetto si adatta alla tua azienda: il preventivo lo costruiamo insieme.</p>
+    <div class="foot"><span>FiuTO · fiutolab.it</span><span>9 / 11</span></div>
+  </div>
+</section>
+
+<!-- 10 · Perché FiuTO -->
+<section class="slide petrol" id="s10" aria-label="Perché FiuTO">
+  <div class="in">
+    <h2 class="big">Perché <span class="coral">FiuTO.</span></h2>
+    <div class="cards">
+      <div class="card card-deep card-row"><svg class="ic"><use href="#i-star"/></svg><div><h3>Esperienza</h3><p>Anni dentro le aziende e in agenzia: parliamo la tua lingua.</p></div></div>
+      <div class="card card-deep card-row"><svg class="ic"><use href="#i-shield"/></svg><div><h3>Affidabilità</h3><p>Un solo referente, costi chiari prima di partire, tempi rispettati.</p></div></div>
+      <div class="card card-deep card-row"><svg class="ic"><use href="#i-chart"/></svg><div><h3>Guadagno</h3><p>Ogni lavoro ha un obiettivo: più clienti o più margine.</p></div></div>
+    </div>
+    <div class="foot"><span>FiuTO · fiutolab.it</span><span>10 / 11</span></div>
+  </div>
+</section>
+
+<!-- 11 · Contatti -->
+<section class="slide crema" id="s11" aria-label="Contatti">
+  <div class="in">
+    <span class="logo" aria-label="FiuTO">F<span class="lg-i" aria-hidden="true"><span class="stem"></span><span class="base"></span><span class="seat"></span></span><span class="u">u</span><span class="lg-t" aria-hidden="true"><span class="stem"></span><span class="plank"></span></span><span class="lg-o" aria-hidden="true"><span class="shadow"></span><span class="mat"></span><span class="ring"></span></span></span>
+    <div class="grow"></div>
+    <div class="coaster" aria-hidden="true" style="--s:min(36vw,160px)"><i class="sh"></i><i class="mt"></i><i class="rg"></i></div>
+    <h2 class="big">Raccontaci <span class="teal">la tua azienda.</span></h2>
+    <p class="lead" style="color:var(--muted)">Partiamo da un check-up: capiamo insieme da dove cominciare.</p>
+    <div class="contacts">
+      <a class="chip chip-wa" href="https://wa.me/393669768852" target="_blank" rel="noopener" data-goatcounter-click="WhatsApp · presentazione · contatti"><span class="val"><small>WhatsApp</small>+39 366 976 8852</span><svg class="ic"><use href="#i-chat"/></svg></a>
+      <div class="chip"><span class="val"><small>Email</small><span id="mail">info@fiutolab.it</span></span><button type="button" id="copy" data-goatcounter-click="Copia email · presentazione">Copia</button></div>
+      <a class="chip" href="https://fiutolab.it" target="_blank" rel="noopener" data-goatcounter-click="Sito · presentazione"><span class="val"><small>Sito</small>fiutolab.it</span><svg class="ic"><use href="#i-arrow"/></svg></a>
+    </div>
+    <div class="foot"><span>FiuTO · Torino</span><span>11 / 11</span></div>
+  </div>
+</section>
+
+</main>
+
+<script>
+(function () {
+  var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  var track = document.getElementById('track');
+  slides.forEach(function () { track.appendChild(document.createElement('span')); });
+  var bars = track.children;
+  function mark(i) { for (var k = 0; k < bars.length; k++) bars[k].classList.toggle('on', k <= i); }
+  mark(0);
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) mark(slides.indexOf(e.target)); });
+    }, { rootMargin: '-45% 0px -45% 0px' });
+    slides.forEach(function (s) { io.observe(s); });
+  }
+  var btn = document.getElementById('copy');
+  btn.addEventListener('click', function () {
+    var txt = 'info@fiutolab.it';
+    function done() { btn.textContent = 'Copiata'; setTimeout(function () { btn.textContent = 'Copia'; }, 1800); }
+    function fallback() { var r = document.createRange(); r.selectNodeContents(document.getElementById('mail')); var s = window.getSelection(); s.removeAllRanges(); s.addRange(r); }
+    try { navigator.clipboard.writeText(txt).then(done, fallback); } catch (e) { fallback(); }
+  });
+})();
+</script>
+
+</body>
+</html>
