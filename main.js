@@ -57,25 +57,6 @@
 
   if (!animated) return;
 
-  /* ---------- Fascia dei settori: accelera con lo scroll ---------- */
-  var track = document.querySelector('.marquee-track');
-  var anim = track && track.getAnimations ? track.getAnimations()[0] : null;
-  if (anim) {
-    var lastY = window.scrollY, boost = 0, ticking = false;
-    window.addEventListener('scroll', function () {
-      var y = window.scrollY;
-      boost = Math.min(boost + Math.abs(y - lastY) * 0.06, 7);
-      lastY = y;
-      if (!ticking) { ticking = true; requestAnimationFrame(decay); }
-    }, { passive: true });
-    function decay() {
-      boost *= 0.92;
-      anim.playbackRate = 1 + boost;
-      if (boost > 0.02) requestAnimationFrame(decay);
-      else { anim.playbackRate = 1; ticking = false; }
-    }
-  }
-
   /* ---------- Solo con il mouse: sottobicchiere, pulsanti magnetici, cursore ---------- */
   if (!finePointer) return;
 

@@ -172,7 +172,7 @@ p { margin: 0; }
   width: 70vmax; height: 70vmax; right: -24vmax; top: -22vmax; border-radius: 50%;
   background: radial-gradient(closest-side, rgba(30, 74, 82, .9), rgba(30, 74, 82, 0));
 }
-.hero-body { width: 100%; display: flex; flex-direction: column; gap: clamp(28px, 4vw, 48px); padding-bottom: clamp(36px, 6vw, 72px); }
+.hero-body { width: 100%; display: flex; flex-direction: column; gap: clamp(28px, 4vw, 48px); padding-bottom: clamp(48px, 9vh, 112px); }
 
 .hero-title { font-size: clamp(46px, 9.2vw, 148px); line-height: .9; letter-spacing: var(--display-track); }
 .hero-title .line { display: block; }
@@ -210,20 +210,6 @@ p { margin: 0; }
 .go .fade { opacity: 1; transform: none; transition: opacity .8s ease calc(var(--i) * 85ms * var(--k) + 120ms), transform .9s var(--ease-out) calc(var(--i) * 85ms * var(--k) + 120ms); }
 .go .hero-coaster .lg-o { opacity: 1; transform: none; transition: opacity .8s ease, transform 1.4s var(--ease-out); }
 
-/* ---------- Fascia dei settori ---------- */
-.marquee { position: relative; border-top: 1px solid rgba(243, 241, 236, .14); padding-block: clamp(16px, 2.2vw, 26px); overflow: hidden; }
-.marquee-track { display: flex; width: max-content; animation: marquee 48s linear infinite; }
-.marquee-list { display: flex; list-style: none; margin: 0; padding: 0; flex: none; }
-.marquee-list li {
-  display: flex; align-items: center; white-space: nowrap;
-  font-family: var(--display); font-weight: 500; font-size: clamp(26px, 3.4vw, 46px); letter-spacing: -0.02em; color: var(--cream);
-}
-/* separatore: un piccolo sottobicchiere */
-.marquee-list li::after {
-  content: ""; width: .42em; height: .42em; margin-inline: .6em; border-radius: 50%; border: .085em solid var(--coral); flex: none;
-}
-@keyframes marquee { to { transform: translateX(-50%); } }
-
 /* ---------- Cursore curato (solo mouse) ---------- */
 .cursor { display: none; }
 @media (hover: hover) and (pointer: fine) {
@@ -245,8 +231,5 @@ p { margin: 0; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { transition: none !important; animation: none !important; }
-  .marquee-track { width: auto; padding-inline: var(--gutter); }
-  .marquee-list { flex-wrap: wrap; row-gap: 4px; }
-  .marquee-list[aria-hidden="true"] { display: none; }
   .hero-coaster { transform: none; }
 }
