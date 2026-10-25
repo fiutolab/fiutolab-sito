@@ -43,6 +43,7 @@
 <script src="/main.js" defer></script>
 </head>
 <body>
+<a class="skip" href="#contenuto">Vai al contenuto</a>
 
 <div class="intro-stage" aria-hidden="true">
   <span class="logo logo-xl"><span class="f">F</span><span class="lg-i"><span class="stem"></span><span class="base"></span><span class="seat"></span></span><span class="u">u</span><span class="lg-t"><span class="stem"></span><span class="plank"></span></span><span class="lg-o"><span class="shadow"></span><span class="mat"></span><span class="ring"></span></span></span>
@@ -58,19 +59,38 @@
       <a href="#domande">Domande</a>
       <a href="#contatti">Contatti</a>
     </nav>
-    <a class="btn btn-coral btn-sm header-cta" href="https://wa.me/393669768852?text=Ciao%20FiuTO%2C%20vi%20scrivo%20dal%20sito." target="_blank" rel="noopener" data-magnetic data-goatcounter-click="WhatsApp · home · testata">Scrivici</a>
+    <div class="header-actions">
+      <a class="btn btn-coral btn-sm" href="https://wa.me/393669768852?text=Ciao%20FiuTO%2C%20vi%20scrivo%20dal%20sito." target="_blank" rel="noopener" data-magnetic data-goatcounter-click="WhatsApp · home · testata">Scrivici</a>
+      <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu"><span class="menu-icon" aria-hidden="true"></span><span class="menu-label">Menu</span></button>
+    </div>
   </div>
 </header>
 
-<main>
+<div class="menu" id="menu" hidden>
+  <nav class="wrap" aria-label="Menu">
+    <ul class="menu-links">
+      <li style="--i:0"><a href="#servizi">Cosa facciamo</a></li>
+      <li style="--i:1"><a href="#locali">Per i locali</a></li>
+      <li style="--i:2"><a href="#metodo">Come lavoriamo</a></li>
+      <li style="--i:3"><a href="#domande">Domande</a></li>
+      <li style="--i:4"><a href="#contatti">Contatti</a></li>
+    </ul>
+    <ul class="menu-contacts" style="--i:5">
+      <li><a href="https://wa.me/393669768852?text=Ciao%20FiuTO%2C%20vi%20scrivo%20dal%20sito." target="_blank" rel="noopener" data-goatcounter-click="WhatsApp · home · menu">WhatsApp</a></li>
+      <li><a href="tel:+393669768852" data-goatcounter-click="Telefono · home · menu">+39 366 976 8852</a></li>
+      <li><a href="mailto:info@fiutolab.it" data-goatcounter-click="Email · home · menu">info@fiutolab.it</a></li>
+    </ul>
+  </nav>
+</div>
+
+<main id="contenuto" tabindex="-1">
 <section class="hero" id="hero">
-  <div class="hero-coaster" aria-hidden="true">
-    <span class="lg-o"><span class="shadow"></span><span class="mat"></span><span class="ring"></span></span>
-  </div>
+  <div class="hero-light" aria-hidden="true"></div>
+  <p class="hero-where fade" style="--i:0">Torino, di persona.<br>Resto d'Italia, da remoto.</p>
   <div class="wrap hero-body">
-    <h1 class="hero-title">
-      <span class="line"><span class="w" style="--i:0"><span>Qualità</span></span> <span class="w" style="--i:1"><span>dell'agenzia.</span></span></span>
-      <span class="line hl"><span class="w" style="--i:2"><span>Costo</span></span> <span class="w" style="--i:3"><span>dei</span></span> <span class="w" style="--i:4"><span>freelance.</span></span></span>
+    <h1 class="hero-title" aria-label="Qualità dell'agenzia. Costo dei freelance.">
+      <span class="line" aria-hidden="true"><span class="w" style="--i:0"><span>Qualità</span></span> <span class="w" style="--i:1"><span>dell'agenzia.</span></span></span>
+      <span class="line hl" aria-hidden="true"><span class="w" style="--i:2"><span>C<span class="o-coaster"><span class="lg-o"><span class="shadow"></span><span class="mat"></span><span class="ring"></span></span></span>sto</span></span> <span class="w" style="--i:3"><span>dei</span></span> <span class="w" style="--i:4"><span>freelance.</span></span></span>
     </h1>
     <div class="hero-foot">
       <p class="hero-sub fade" style="--i:5">Siti, immagine e strategia per le attività di Torino. Una rete di professionisti, un solo referente, zero giri di parole.</p>

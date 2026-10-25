@@ -13,6 +13,7 @@
     var small = document.querySelector('.site-header .logo');
     var ring = big && big.querySelector('.lg-o .ring');
     var done = false;
+    var evs = ['pointerdown', 'keydown', 'wheel', 'touchmove'];
     if (!big || !small || !ring || !big.animate) { finish(); return; }
 
     function finish() {
@@ -22,19 +23,18 @@
       html.classList.add('intro-done');
       if (stage) stage.remove();
       reveal();
-      removeSkip();
+      evs.forEach(function (e) { window.removeEventListener(e, finish); });
     }
 
     function fly() {
       if (done) return;
       var b = big.getBoundingClientRect(), s = small.getBoundingClientRect();
       var scale = parseFloat(getComputedStyle(small).fontSize) / parseFloat(getComputedStyle(big).fontSize);
-      var dx = s.left - b.left, dy = s.top - b.top;
-      big.style.transformOrigin = '0 0';
       var k = parseFloat(getComputedStyle(html).getPropertyValue('--k')) || 1;
       var t = 820 * k;
+      big.style.transformOrigin = '0 0';
       big.animate(
-        [{ transform: 'none' }, { transform: 'translate(' + dx + 'px,' + dy + 'px) scale(' + scale + ')' }],
+        [{ transform: 'none' }, { transform: 'translate(' + (s.left - b.left) + 'px,' + (s.top - b.top) + 'px) scale(' + scale + ')' }],
         { duration: t, easing: 'cubic-bezier(.7,0,.2,1)', fill: 'forwards' }
       ).onfinish = finish;
       stage.animate([{ backgroundColor: 'rgba(14,39,45,1)' }, { backgroundColor: 'rgba(14,39,45,0)' }],
@@ -44,32 +44,88 @@
     }
 
     ring.addEventListener('animationend', function () { setTimeout(fly, 120); }, { once: true });
-
     /* chi ha fretta salta l'apertura: clic, tasto o scroll */
-    function skip() { finish(); }
-    var evs = ['pointerdown', 'keydown', 'wheel', 'touchmove'];
-    evs.forEach(function (e) { window.addEventListener(e, skip, { passive: true }); });
-    function removeSkip() { evs.forEach(function (e) { window.removeEventListener(e, skip); }); }
+    evs.forEach(function (e) { window.addEventListener(e, finish, { passive: true }); });
   }
 
   if (html.classList.contains('intro')) intro();
   else if (animated) requestAnimationFrame(function () { requestAnimationFrame(reveal); });
 
-  if (!animated) return;
+  /* ---------- Menu a tutto schermo (telefono) ---------- */
+  var menuBtn = document.querySelector('.menu-btn');
+  var menu = document.getElementById('menu');
+  var main = document.querySelector('main');
+  if (menuBtn && menu) {
+    var closeTimer;
+    var setMenu = function (open) {
+      clearTimeout(closeTimer);
+      menuBtn.setAttribute('aria-expanded', String(open));
+      html.classList.toggle('menu-open', open);
+      if (main) main.inert = open;
+      if (open) {
+        menu.hidden = false;
+        requestAnimationFrame(function () { requestAnimationFrame(function () { menu.classList.add('is-open'); }); });
+        var first = menu.querySelector('a');
+        if (first) first.focus({ preventScroll: true });
+      } else {
+        menu.classList.remove('is-open');
+        closeTimer = setTimeout(function () { menu.hidden = true; }, animated ? 600 : 0);
+      }
+    };
+    menuBtn.addEventListener('click', function () { setMenu(menuBtn.getAttribute('aria-expanded') !== 'true'); });
+    menu.addEventListener('click', function (e) { if (e.target.closest('a')) setMenu(false); });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && menuBtn.getAttribute('aria-expanded') === 'true') { setMenu(false); menuBtn.focus(); }
+    });
+    matchMedia('(min-width: 720px)').addEventListener('change', function (m) { if (m.matches) setMenu(false); });
+  }
 
-  /* ---------- Solo con il mouse: sottobicchiere, pulsanti magnetici, cursore ---------- */
+  /* ---------- Testata: piena dopo l'apertura, si nasconde scendendo e torna risalendo ---------- */
+  var header = document.querySelector('.site-header');
+  var hero = document.getElementById('hero');
+  var lastY = window.scrollY;
+  function onScroll() {
+    var y = window.scrollY;
+    if (header) {
+      header.classList.toggle('is-solid', y > 40);
+      if (!html.classList.contains('menu-open')) header.classList.toggle('is-hidden', y > lastY && y > 320);
+    }
+    lastY = y;
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  if (!animated || !hero) return;
+
+  /* ---------- Scorrendo: le righe del titolo si separano, il sottobicchiere gira ---------- */
+  var coaster = hero.querySelector('.o-coaster');
+  var px = 0, ticking = false;
+  function paint() {
+    ticking = false;
+    var p = Math.min(Math.max(window.scrollY / hero.offsetHeight, 0), 1);
+    hero.style.setProperty('--p', p.toFixed(3));
+    if (coaster) coaster.style.setProperty('--sr', (p * 50 + px * 16).toFixed(1) + 'deg');
+  }
+  function ask() { if (!ticking) { ticking = true; requestAnimationFrame(paint); } }
+  window.addEventListener('scroll', ask, { passive: true });
+
+  /* ---------- Solo con il mouse: luce, pulsanti magnetici, cursore ---------- */
   if (!finePointer) return;
 
-  var hero = document.getElementById('hero');
-  var coaster = document.querySelector('.hero-coaster');
-  if (hero && coaster) {
-    hero.addEventListener('pointermove', function (e) {
-      var r = hero.getBoundingClientRect();
-      var x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
-      coaster.style.setProperty('--cx', (x * -26).toFixed(1) + 'px');
-      coaster.style.setProperty('--cy', (y * -20).toFixed(1) + 'px');
-      coaster.style.setProperty('--cr', (x * 14).toFixed(1) + 'deg');
-    });
+  var light = hero.querySelector('.hero-light');
+  var lx = innerWidth * .82, ly = innerHeight * .18, tx = lx, ty = ly, glowing = false;
+  hero.addEventListener('pointermove', function (e) {
+    var r = hero.getBoundingClientRect();
+    tx = e.clientX - r.left; ty = e.clientY - r.top;
+    px = tx / r.width - .5;
+    ask();
+    if (!glowing) { glowing = true; requestAnimationFrame(glow); }
+  });
+  function glow() {
+    lx += (tx - lx) * .08; ly += (ty - ly) * .08;
+    if (light) { light.style.setProperty('--lx', lx.toFixed(1) + 'px'); light.style.setProperty('--ly', ly.toFixed(1) + 'px'); }
+    if (Math.abs(tx - lx) + Math.abs(ty - ly) > .5) requestAnimationFrame(glow);
+    else glowing = false;
   }
 
   document.querySelectorAll('[data-magnetic]').forEach(function (el) {
@@ -100,4 +156,3 @@
     else moving = false;
   }
 })();
-
