@@ -722,10 +722,6 @@ p { margin: 0; }
   .anim .cursor.hot { width: 64px; height: 64px; margin: -32px 0 0 -32px; background: rgba(238, 138, 106, .12); }
 }
 
-/* ---------- Segnaposto di lavoro (non va online) ---------- */
-.wip { padding-block: 120px 160px; color: var(--muted); }
-.wip p { max-width: 60ch; }
-
 /* ---------- Movimento ridotto: tutto fermo ---------- */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
