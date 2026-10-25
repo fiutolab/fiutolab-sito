@@ -129,10 +129,15 @@
   if ('IntersectionObserver' in window) {
     /* titoli: parola per parola */
     document.querySelectorAll('[data-split]').forEach(function (h) {
-      var words = h.textContent.trim().split(/\s+/);
-      h.innerHTML = words.map(function (w, i) {
-        return '<span class="w" style="--i:' + i + '"><span>' + w + '</span></span>';
-      }).join(' ');
+      /* gli a capo voluti (<br>) restano dove sono */
+      var i = 0;
+      h.innerHTML = h.innerHTML.split(/<br\s*\/?>/i).map(function (part) {
+        var tmp = document.createElement('span');
+        tmp.innerHTML = part;
+        return tmp.textContent.trim().split(/\s+/).map(function (w) {
+          return '<span class="w" style="--i:' + (i++) + '"><span>' + w + '</span></span>';
+        }).join(' ');
+      }).join('<br>');
     });
     var once = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
