@@ -97,6 +97,35 @@
 
   if (!animated || !hero) return;
 
+  /* ---------- Rivelazioni allo scroll ---------- */
+  if ('IntersectionObserver' in window) {
+    /* titoli: parola per parola */
+    document.querySelectorAll('[data-split]').forEach(function (h) {
+      var words = h.textContent.trim().split(/\s+/);
+      h.setAttribute('aria-label', h.textContent.trim());
+      h.innerHTML = words.map(function (w, i) {
+        return '<span class="w" aria-hidden="true" style="--i:' + i + '"><span>' + w + '</span></span>';
+      }).join(' ');
+    });
+    var once = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        e.target.classList.add(e.target.classList.contains('tile') ? 'play' : e.target.tagName === 'LI' ? 'lit' : 'in');
+        once.unobserve(e.target);
+      });
+    }, { rootMargin: '0px 0px -18% 0px' });
+    document.querySelectorAll('[data-split], .tile').forEach(function (el) { once.observe(el); });
+    /* le tre frasi si accendono quando arrivano a metà schermo */
+    var lit = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('lit'); lit.unobserve(e.target); } });
+    }, { rootMargin: '0px 0px -42% 0px' });
+    document.querySelectorAll('.changes-list li').forEach(function (el) { lit.observe(el); });
+  }
+  /* col mouse, la micro-animazione riparte a ogni passaggio */
+  if (finePointer) document.querySelectorAll('.tile').forEach(function (t) {
+    t.addEventListener('mouseenter', function () { t.classList.remove('play'); void t.offsetWidth; t.classList.add('play'); });
+  });
+
   /* ---------- Scorrendo: le righe del titolo si separano, il sottobicchiere gira ---------- */
   var coaster = hero.querySelector('.o-coaster');
   var px = 0, ticking = false;
