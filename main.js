@@ -95,6 +95,34 @@
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
+  /* ---------- Copia email ---------- */
+  document.querySelectorAll('.copy[data-copy]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var reset = function () { setTimeout(function () { btn.textContent = 'Copia'; }, 1800); };
+      var ok = function () { btn.textContent = 'Copiata'; reset(); };
+      var fallback = function () {
+        var el = btn.parentNode.querySelector('a');
+        var r = document.createRange(); r.selectNodeContents(el);
+        var sel = getSelection(); sel.removeAllRanges(); sel.addRange(r);
+        btn.textContent = 'Selezionata'; reset();
+      };
+      try { navigator.clipboard.writeText(btn.getAttribute('data-copy')).then(ok, fallback); } catch (e) { fallback(); }
+    });
+  });
+
+  /* ---------- WhatsApp fisso su telefono: dopo l'apertura, non sopra i contatti ---------- */
+  var fab = document.getElementById('wa-float');
+  var contact = document.getElementById('contatti');
+  if (fab) {
+    if (!hero || !contact || !('IntersectionObserver' in window)) fab.classList.add('show');
+    else {
+      var heroIn = true, contactIn = false;
+      var upd = function () { fab.classList.toggle('show', !heroIn && !contactIn && !html.classList.contains('menu-open')); };
+      new IntersectionObserver(function (e) { heroIn = e[0].isIntersecting; upd(); }).observe(hero);
+      new IntersectionObserver(function (e) { contactIn = e[0].isIntersecting; upd(); }).observe(contact);
+    }
+  }
+
   if (!animated || !hero) return;
 
   /* ---------- Rivelazioni allo scroll ---------- */
@@ -102,9 +130,8 @@
     /* titoli: parola per parola */
     document.querySelectorAll('[data-split]').forEach(function (h) {
       var words = h.textContent.trim().split(/\s+/);
-      h.setAttribute('aria-label', h.textContent.trim());
       h.innerHTML = words.map(function (w, i) {
-        return '<span class="w" aria-hidden="true" style="--i:' + i + '"><span>' + w + '</span></span>';
+        return '<span class="w" style="--i:' + i + '"><span>' + w + '</span></span>';
       }).join(' ');
     });
     var once = new IntersectionObserver(function (entries) {
@@ -114,12 +141,35 @@
         once.unobserve(e.target);
       });
     }, { rootMargin: '0px 0px -18% 0px' });
-    document.querySelectorAll('[data-split], .tile').forEach(function (el) { once.observe(el); });
+    document.querySelectorAll('[data-split], .tile, .net').forEach(function (el) { once.observe(el); });
     /* le tre frasi si accendono quando arrivano a metà schermo */
     var lit = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('lit'); lit.unobserve(e.target); } });
-    }, { rootMargin: '0px 0px -42% 0px' });
-    document.querySelectorAll('.changes-list li').forEach(function (el) { lit.observe(el); });
+    }, { rootMargin: '0px 0px -16% 0px' });
+    document.querySelectorAll('.changes-list li, .steps li').forEach(function (el) { lit.observe(el); });
+    /* la sezione dei locali si accende quando entra per un quarto */
+    var night = document.querySelector('.night');
+    if (night) new IntersectionObserver(function (e, o) {
+      if (e[0].isIntersecting) { night.classList.add('lit'); o.disconnect(); }
+    }, { threshold: .22 }).observe(night);
+  }
+
+  /* ---------- Fuori e dentro: la porta si apre scorrendo ---------- */
+  var doorScroll = document.querySelector('.door-scroll');
+  var doorFrame = doorScroll && doorScroll.querySelector('.door-frame');
+  if (doorFrame) {
+    var doorTick = false;
+    var paintDoor = function () {
+      doorTick = false;
+      var r = doorScroll.getBoundingClientRect();
+      var span = r.height - innerHeight;
+      if (span <= 0) return;
+      var prog = Math.min(Math.max(-r.top / span, 0), 1);
+      var d = Math.min(Math.max((prog - .12) / .62, 0), 1);
+      doorScroll.style.setProperty('--d', (d * d * (3 - 2 * d)).toFixed(3));
+    };
+    window.addEventListener('scroll', function () { if (!doorTick) { doorTick = true; requestAnimationFrame(paintDoor); } }, { passive: true });
+    paintDoor();
   }
   /* col mouse, la micro-animazione riparte a ogni passaggio */
   if (finePointer) document.querySelectorAll('.tile').forEach(function (t) {
