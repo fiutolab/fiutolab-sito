@@ -134,7 +134,8 @@
       h.innerHTML = h.innerHTML.split(/<br\s*\/?>/i).map(function (part) {
         var tmp = document.createElement('span');
         tmp.innerHTML = part;
-        return tmp.textContent.trim().split(/\s+/).map(function (w) {
+        /* si divide solo sugli spazi normali: gli spazi non divisibili tengono unite le parole */
+        return tmp.textContent.trim().split(/[ \t\r\n]+/).map(function (w) {
           return '<span class="w" style="--i:' + (i++) + '"><span>' + w + '</span></span>';
         }).join(' ');
       }).join('<br>');

@@ -275,7 +275,10 @@ p { margin: 0; }
    ========================================================== */
 .section { padding-block: clamp(88px, 12vw, 168px); }
 .section-head { display: grid; gap: 20px 64px; margin-bottom: clamp(48px, 6vw, 88px); }
-@media (min-width: 900px) { .section-head:not(.stack) { grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr); align-items: end; } }
+@media (min-width: 900px) { .section-head:not(.stack) { grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr); align-items: start; } }
+/* titolo a sinistra, testo a destra: il testo parte alla prima riga del titolo */
+@media (min-width: 900px) { .section-head:not(.stack) .lead, .night-head .lead, .feature-text { padding-top: .35em; } }
+.changes .section-head { margin-bottom: clamp(24px, 3vw, 40px); }
 .h2 { font-size: clamp(38px, 6vw, 92px); line-height: .96; letter-spacing: var(--display-track); }
 .lead { max-width: 42ch; font-size: clamp(18px, 1.5vw, 21px); line-height: 1.5; color: var(--muted); }
 
@@ -287,7 +290,7 @@ p { margin: 0; }
 /* ---------- Cosa cambia: tre frasi che si accendono scorrendo ---------- */
 .changes-list { list-style: none; margin: 0; padding: 0; border-bottom: 1px solid var(--line); }
 .changes-list li { display: grid; gap: 10px 48px; padding-block: clamp(22px, 3vw, 40px); border-top: 1px solid var(--line); }
-@media (min-width: 900px) { .changes-list li { grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr); align-items: end; } }
+@media (min-width: 900px) { .changes-list li { grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr); align-items: start; } .changes-list p { padding-top: .45em; } }
 /* le tre frasi: stessa grandezza, calcolata sulla più lunga ("Ti capiscono.") perché stia sempre nella sua colonna */
 .trio .big { display: block; min-width: 0; container-type: inline-size; }
 .trio .big-t { display: block; white-space: nowrap; font-size: min(124px, calc(100cqi / 6.5)); }
@@ -423,7 +426,7 @@ p { margin: 0; }
 .night.lit::before, html:not(.anim) .night::before { opacity: 1; }
 .night .lead { color: var(--on-dark-muted); }
 .night-head { display: grid; gap: 20px 64px; margin-bottom: clamp(40px, 5vw, 72px); }
-@media (min-width: 900px) { .night-head { grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr); align-items: end; } }
+@media (min-width: 900px) { .night-head { grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr); align-items: start; } }
 .neon-title { font-size: clamp(38px, 6.4vw, 104px); }
 .neon {
   display: inline-block; color: #FFC4AE;
@@ -452,10 +455,26 @@ p { margin: 0; }
 .room-in { border-color: rgba(238, 138, 106, .45); background: rgba(238, 138, 106, .07); box-shadow: inset 0 0 60px rgba(238, 138, 106, .08); }
 .room-tag { font-size: 15px; font-weight: 500; color: var(--coral); }
 .room h3 { font-size: clamp(28px, 3.4vw, 52px); line-height: 1; letter-spacing: var(--display-track); max-width: 14ch; }
-.room ul { list-style: none; margin: auto 0 0; padding: 18px 0 0; display: grid; gap: 0 32px; }
+.room ul { list-style: none; margin: 10px 0 0; padding: 0; display: grid; gap: 0 32px; }
 @media (min-width: 1000px) { .room ul { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 .room li { padding-block: 9px; border-top: 1px solid rgba(243, 241, 236, .12); font-size: clamp(17px, 1.4vw, 20px); }
 .door-knob, .door-hint { display: none; }
+
+/* schede affiancate: le voci si allineano riga per riga tra le due colonne */
+@media (min-width: 900px) {
+  .panels { grid-template-rows: repeat(7, auto); row-gap: 0; }
+  .panels .room { grid-row: span 7; display: grid; grid-template-rows: subgrid; row-gap: 0; }
+  .panels .svc-list { display: contents; }
+  .panels .room h3 { margin-bottom: 18px; }
+}
+@media (min-width: 720px) {
+  html:not(.anim) .door-frame { grid-template-rows: repeat(7, auto); row-gap: 0; }
+  html:not(.anim) .door { display: contents; }
+  html:not(.anim) .room-out { order: -1; }
+  html:not(.anim) .door-frame .room { grid-row: span 7; display: grid; grid-template-rows: subgrid; row-gap: 0; }
+  html:not(.anim) .door-frame .room ul { display: contents; }
+  html:not(.anim) .door-frame .room h3 { margin-bottom: 18px; }
+}
 
 /* con le animazioni: la porta si apre scorrendo */
 .anim .door-scroll { height: 230vh; }
@@ -662,18 +681,18 @@ p { margin: 0; }
 .panels { display: grid; gap: 16px; }
 @media (min-width: 900px) { .panels { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 .panels .room h3 { margin-bottom: 8px; }
-.svc-list { margin: auto 0 0; padding: 0; }
-.svc-list dt { padding-top: 16px; margin-top: 16px; border-top: 1px solid rgba(243, 241, 236, .12); font-family: var(--display); font-weight: 600; font-size: clamp(19px, 1.6vw, 23px); letter-spacing: var(--display-track); }
-.svc-list dt:first-child { margin-top: 8px; }
+.svc-list { margin: 10px 0 0; padding: 0; }
+.svc-list > div { padding-block: 14px; border-top: 1px solid rgba(243, 241, 236, .12); }
+.svc-list dt { font-family: var(--display); font-weight: 600; font-size: clamp(19px, 1.6vw, 23px); letter-spacing: var(--display-track); }
 .svc-list dd { margin: 4px 0 0; color: var(--on-dark-muted); font-size: 16px; line-height: 1.5; max-width: 44ch; }
 .panels-light .room { background: var(--surface); border-color: transparent; box-shadow: none; color: var(--fg); }
 .panels-light .room-tag { color: var(--accent); }
-.panels-light .svc-list dt { border-top-color: var(--line); }
+.panels-light .svc-list > div { border-top-color: var(--line); }
 .panels-light .svc-list dd { color: var(--muted); }
 
 /* blocco testo con titolo a sinistra */
 .feature { display: grid; gap: 24px 64px; }
-@media (min-width: 900px) { .feature { grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); align-items: end; } }
+@media (min-width: 900px) { .feature { grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); align-items: start; } }
 .feature-text { display: flex; flex-direction: column; gap: 16px; }
 .feature-text p:not(.lead) { color: var(--muted); max-width: 52ch; font-size: clamp(17px, 1.3vw, 19px); }
 .start-section { padding-top: 0; }
